@@ -1,0 +1,11 @@
+{
+  "name": "node-fs-glob",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "MicroFish91 <mwfisher91@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^10.0.1",
+    "glob": "^7.2.0"
+  }
+}
