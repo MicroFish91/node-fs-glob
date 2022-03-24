@@ -1,8 +1,12 @@
-import glob from "glob-promise";
+import { getByExt, getCwd } from "./glob_tools/basics";
 
 async function main() {
-  const files = await glob("test_playground/**/*.js");
-  console.log(files);
+  let files = await getCwd();
+  // console.log(files);
+
+  // Organize
+  files = await getByExt(".js");
+  console.log("JS Files Globbed: ", files);
 }
 
 main();
