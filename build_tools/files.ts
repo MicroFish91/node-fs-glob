@@ -1,5 +1,6 @@
 import * as fse from "fs-extra";
 import path from "path";
+
 export async function writeFiles(dirs: string[]): Promise<void> {
   const FILE_EXTENSIONS = [".ts", ".js", ".txt", ".rs", ".json", ".lock"];
 
@@ -11,10 +12,16 @@ export async function writeFiles(dirs: string[]): Promise<void> {
       const content = "test data";
       const contentPath = path.join(
         __dirname,
+        "test_playground",
         dir,
         `example${i}${FILE_EXTENSIONS[extIndex]}`
       );
-      await fse.writeFile(contentPath, content);
+
+      try {
+        await fse.writeFile(contentPath, content);
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 }
