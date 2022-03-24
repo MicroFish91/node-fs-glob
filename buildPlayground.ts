@@ -10,7 +10,7 @@ async function build(): Promise<void> {
   await buildDirs(["test1", "test1/again1", "test1/again2", "test2", "test3"]);
 
   // Build Files
-  await writeFiles(["test1/again1", "test1/again2", "test2", "test3"]);
+  await writeFiles(["test1", "test1/again1", "test1/again2", "test2", "test3"]);
 }
 
 build();
