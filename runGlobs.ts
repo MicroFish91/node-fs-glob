@@ -1,3 +1,4 @@
+import { moveFiles } from "./fs_tools";
 import { getByExt, getCwd } from "./glob_tools/basics";
 
 async function main() {
@@ -6,7 +7,7 @@ async function main() {
 
   // Organize
   files = await getByExt(".js");
-  console.log("JS Files Globbed: ", files);
+  await moveFiles(files, "test_playground/organized/js");
 }
 
 main();

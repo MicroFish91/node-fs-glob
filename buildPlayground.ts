@@ -1,6 +1,4 @@
-import { buildDirs } from "./fs_tools/dirs";
-import { writeFiles } from "./fs_tools/files";
-import { removeFilesAndDirs } from "./fs_tools/remove";
+import { buildDirs, removeFilesAndDirs, writeFiles } from "./fs_tools";
 
 async function build(): Promise<void> {
   // Remove Dirs

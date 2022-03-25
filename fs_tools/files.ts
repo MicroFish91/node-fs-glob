@@ -27,3 +27,18 @@ export async function writeFiles(dirs: string[]): Promise<void> {
     }
   }
 }
+
+export async function moveFiles(
+  srcLocations: string[],
+  dest: string
+): Promise<void> {
+  try {
+    for (const src of srcLocations) {
+      const srcPath = path.join(__dirname, "..", src);
+      const destPath = path.join(__dirname, "..", dest, path.basename(src));
+      await fse.move(srcPath, destPath, { overwrite: true });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
