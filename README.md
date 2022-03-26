@@ -6,19 +6,43 @@ In computer programming, glob patterns specify sets of filenames with wildcard c
 
 Run 'ts-node buildPlayground.ts' to build the playground. You can then mess around with the files generated in your local 'test_playground' folder. You can run different glob pattern tests in 'runGlobs.ts' or run custom commands through the command line.
 
-## Pattern Matching
+## Glob Patterns
 
-1. Wildcard Matching - \*, ?, []
+Glob patterns resemble regular expressions somewhat, but have a much simpler syntax. The following character sequences have special meaning within a glob pattern:
 
-### Wildcard Matching
+? matches any one character
 
-Asterisks (\*) :
+- matches any number of characters
 
-\* - On Linux, will match everything except slashes. On Windows, it will avoid matching backslashes as well as slashes.
+{!glob} Matches anything that does not match glob
 
-\*\* - Recursively matches zero or more directories that fall under the current directory.
+{a,b,c} matches any one of a, b or c
 
-\*(pattern_list) - Only matches if zero or one occurrence of any pattern is included in the pattern-list above
+[abc] matches any character in the set a, b or c
+
+[^abc] matches any character not in the set a, b or c
+
+[a-z] matches any character in the range a to z, inclusive. A leading or trailing dash will be interpreted literally
+
+Since we use java.util.regex patterns to implement globs, this means that in addition to the above, a number of “character class metacharacters” may be used. Keep in mind, their usefulness is limited since the regex quantifier metacharacters (asterisk, questionmark, and curly brackets) are redefined to mean something else in filename glob language, and the regex quantifiers are not available in glob language.
+
+\w matches any alphanumeric character or underscore
+
+\s matches a space or horizontal tab
+
+\S matches a printable non-whitespace.
+
+\d matches a decimal digit
+
+Here are some examples of glob patterns:
+
+\*.java - all files whose names end with “.java”.
+
+\*.[ch] - all files whose names end with either “.c” or “.h”.
+
+\*.{c,cpp,h,hpp,cxx,hxx} - all C or C++ files.
+
+[^#]\* - all files whose names do not start with “#”.
 
 ## Exercise
 
