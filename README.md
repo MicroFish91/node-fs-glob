@@ -10,11 +10,7 @@ npm run glob "{insert glob string here}"
 
 ## Pattern Matching
 
-1. Wildcard Matching - \*, ?, []
-
-### Wildcard Matching
-
-1. Asterisks (\*) :
+### Asterisks (\*)
 
 \* - On Linux, will match everything except slashes. On Windows, it will avoid matching backslashes as well as slashes.
 
@@ -22,7 +18,7 @@ npm run glob "{insert glob string here}"
 
 \*(pattern_list) - Only matches if zero or one occurrence of any pattern is included in the pattern-list above
 
-2. Question mark (?)
+### Question mark (?)
 
 Matches exactly one character.
 
