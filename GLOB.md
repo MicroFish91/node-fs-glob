@@ -60,6 +60,8 @@ or use whatever escape mechanism is supported at the command line.
 
 ## Examples
 
+First run 'npm run build'
+
 1. Asterisks (\*)
 
 - few ways to query similar things using \*\*, \*, \*()
