@@ -5,7 +5,8 @@ import { getByExt, getCwd } from "./glob_tools/basics";
 async function main() {
   // test custom glob select
   if (process.argv[2]) {
-    // test_playground/**/*.js
+    // npm run glob "test_playground/std/**/*.js"
+    console.log("YOU QUERIED GLOB STRING: ", process.argv[2]);
     const files = await glob(process.argv[2]);
     console.log(files);
   }
@@ -18,6 +19,7 @@ async function main() {
     // Ex. 1
     // Organize
     files = await getByExt(".js");
+    console.log(files);
     await moveFiles(files, "test_playground/organized/js");
   }
 }

@@ -14,7 +14,7 @@ npm run glob "{insert glob string here}"
 
 ### Wildcard Matching
 
-Asterisks (\*) :
+1. Asterisks (\*) :
 
 \* - On Linux, will match everything except slashes. On Windows, it will avoid matching backslashes as well as slashes.
 
@@ -22,11 +22,12 @@ Asterisks (\*) :
 
 \*(pattern_list) - Only matches if zero or one occurrence of any pattern is included in the pattern-list above
 
-Glob patterns resemble regular expressions somewhat, but have a much simpler syntax. The following character sequences have special meaning within a glob pattern:
+2. Question mark (?)
 
-? matches any one character
+Matches exactly one character.
 
-- matches any number of characters
+??? – Matches all strings with exactly three letters or digits
+a?\*.java – Matches any string beginning with a, followed by at least one letter or digit, and ending with .java
 
 {!glob} Matches anything that does not match glob
 
@@ -58,7 +59,43 @@ Here are some examples of glob patterns:
 
 [^#]\* - all files whose names do not start with “#”.
 
-## Exercise
+## Commands
+
+### Glob Patterns
+
+1. Queries all files and subfolders matching .ts, .tsx, .js, .jsx under std/
+
+Uses \*, \*\*, and \*()
+
+```
+npm run glob "test_playground/std/**/*(*.ts|*.tsx|*.js|*.jsx)"
+```
+
+2.
+
+```
+npm run glob "test_playground/std/*(test1|test2)/**/*(*.js|*.jsx)"
+```
+
+```
+npm run glob "test_playground/std/*(*est*)/**/*(*.js|*.jsx)"
+```
+
+```
+npm run glob "test_playground/std/**/#*.*(js|ts)"
+```
+
+3. only queries js and jsx files with a double digit "example" title
+
+uses ?
+
+```
+npm run glob "test_playground/std/**/*(*example??).*(js|jsx)"
+```
+
+4.
+
+### Bash Example
 
 Note: install latest bash (e.g. brew install bash)
 (shell option)
@@ -72,5 +109,3 @@ bash: mv ./test_playground/**/*.js ./test_playground/organized/js/
 ```
 
 see runGlobs.ts Ex.1 as alternate solution using ts globs
-
-2.
