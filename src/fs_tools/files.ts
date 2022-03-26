@@ -16,6 +16,9 @@ export async function writeStdFiles(): Promise<void> {
   await fse.writeFile(path.join(basePath, "test1/again2", "example6.rs"), "c");
   await fse.writeFile(path.join(basePath, "test1/again2", "#example7.ts"), "c");
 
+  await fse.writeFile(path.join(basePath, "test1/again3", "example21.js"), "c");
+  await fse.writeFile(path.join(basePath, "test1/again3", "#example22.ts"), "");
+
   await fse.writeFile(path.join(basePath, "test2", "example8.js"), "c");
   await fse.writeFile(path.join(basePath, "test2", "example9.jsx"), "c");
   await fse.writeFile(path.join(basePath, "test2", "example10.ts"), "c");
@@ -25,6 +28,10 @@ export async function writeStdFiles(): Promise<void> {
   await fse.writeFile(path.join(basePath, "test3", "example13.jsx"), "c");
   await fse.writeFile(path.join(basePath, "test3", "example14.ts"), "c");
   await fse.writeFile(path.join(basePath, "test3", "example15.tsx"), "c");
+
+  await fse.writeFile(path.join(basePath, "test", "example18.js"), "c");
+  await fse.writeFile(path.join(basePath, "test", "example19.ts"), "c");
+  await fse.writeFile(path.join(basePath, "test", "example20.tsx"), "c");
 
   await fse.writeFile(path.join(basePath, "example16.js"), "c");
   await fse.writeFile(path.join(basePath, "example17.ts"), "c");
