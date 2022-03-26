@@ -4,9 +4,23 @@ In computer programming, glob patterns specify sets of filenames with wildcard c
 
 ## How to Use
 
-Run 'ts-node buildPlayground.ts' to build the playground. You can then mess around with the files generated in your local 'test_playground' folder. You can run different glob pattern tests in 'runGlobs.ts' or run custom commands through the command line.
+Build Playground: npm run build
+Run Custom Glob Code: npm run glob
+npm run glob "{insert glob string here}"
 
-## Glob Patterns
+## Pattern Matching
+
+1. Wildcard Matching - \*, ?, []
+
+### Wildcard Matching
+
+Asterisks (\*) :
+
+\* - On Linux, will match everything except slashes. On Windows, it will avoid matching backslashes as well as slashes.
+
+\*\* - Recursively matches zero or more directories that fall under the current directory.
+
+\*(pattern_list) - Only matches if zero or one occurrence of any pattern is included in the pattern-list above
 
 Glob patterns resemble regular expressions somewhat, but have a much simpler syntax. The following character sequences have special meaning within a glob pattern:
 
