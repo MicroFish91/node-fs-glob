@@ -16,6 +16,7 @@ async function build(): Promise<void> {
     "std/test1",
     "std/test1/again1",
     "std/test1/again2",
+    "std/test1/again3",
     "std/test2",
     "std/test3",
   ]);
@@ -35,7 +36,6 @@ async function build(): Promise<void> {
     "randomized/test1",
     "randomized/test1/again1",
     "randomized/test1/again2",
-    "randomized/test1/again3",
     "randomized/test2",
     "randomized/test3",
   ]);

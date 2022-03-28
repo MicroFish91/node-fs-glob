@@ -129,7 +129,7 @@ for glob shell support
 1. Move each file extension into its own folder under ./test_playground/organized
 
 ```
-bash: mv ./test_playground/**/*.js ./test_playground/organized/js/
+bash: mv ./test_playground/std/**/*.js ./test_playground/organized/js/
 ```
 
 see runGlobs.ts Ex.1 as alternate solution using ts globs
