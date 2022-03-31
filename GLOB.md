@@ -136,4 +136,6 @@ see runGlobs.ts Ex.1 as alternate solution using ts globs
 
 ## Return
 
+https://typescript.hotexamples.com/site/file?hash=0xa702006c71b8a3ea4ad884adf264350bda5916505cea20e047cf5e643269bc13&fullName=lede-cli-master/src/installScript.ts&project=tbtimes/lede-cli
+
 [Back to Main](./README.md)

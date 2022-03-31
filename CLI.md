@@ -2,6 +2,12 @@
 
 ## Commands
 
+1. [ls](#ls) - List directory contents
+2. [echo](#echo) - Prints text to the terminal window
+3. [touch](#touch) - Creates a file
+4. [mkdir](#mkdir) - Creates a directory
+5. [grep](#grep) - Search text for patterns
+
 ### ls
 
 Lists directory contents.
@@ -46,11 +52,50 @@ Common options: -m, -p, -v
 
 Search.
 
-grep is used to search text for patterns specified by the user. It is one of the most useful and powerful commands. There are often scenarios where you’ll be tasked to find a particular string or pattern within a file, but you don’t know where to start looking, that is where grep is extremely useful.
+grep is used to search text for patterns specified by the user. It is one of the most useful and powerful commands. There are often scenarios where you’ll be tasked to find a particular string or pattern within a file, but you don’t know where to start looking, that is where grep is extremely useful. grep is case sensitive.
 
 Syntax: grep [option(s)] pattern [file(s)]
 
-Common options: -i, -c, -n
+Common options: -i, -c, -n, -w
+
+-i: dont be case sensitive
+-w: exact match only
+-n: line number of match
+-r: recursive
+-l: file name of matches only
+-f: Takes search string/pattern from a file, one per line
+-e: search multiple strings/patterns at once
+-E: another way to search multiple strings/patterns at once
+-B {num} => -B 4 => see 4 lines before match
+-A {num} => -A 4 => see 4 lines after match
+-C {num} => -C 2 => 2 lines before and after match
+
+Example:
+
+cat > names.txt
+John Williams
+John Williamson
+
+grep "John Williams" names.txt
+John Williams
+John Williamson
+
+grep -w "John Williams" names.txt
+John Williams
+
+grep -w "John Williams" ./\*.txt
+
+file names of matches:
+grep -wirl "John Williams" ./
+
+num of occurences per file:
+grep -wirc "John Williams" ./
+
+history | grep "git commit" | grep "dotfile"
+
+grep -e "line" -e "above" -e "bash" test.txt
+
+grep -E "line|above|bash" test.txt
 
 ### man
 
@@ -102,13 +147,16 @@ Common options: -q, -n, -i
 
 ### less
 
-View the contents of a text file.
+View the contents of a text file but takes up the whole view of your cli.
 
 The less command allows you to view files without opening an editor. It’s faster to use, and there’s no chance of you inadvertently modifying the file.
 
 Syntax: less file_name
 
 Common options: -e, -f, -n
+
+Example: less file1
+hello world
 
 ### compgen
 
@@ -120,11 +168,14 @@ Syntax: compgen [option(s)]
 
 Common options: -a, -c, -d
 
-### Redirect Operator (>)
+### Redirect Operator (> or >>)
 
 The > character is the redirect operator. This takes the output from the preceding command that you’d normally see in the terminal and sends it to a file that you give it. As an example, take echo “contents of file1” > file1. Here it creates a file called file1 and puts the echoed string into it.
 
-Syntax: >
+">" => create
+">>" => append
+
+Syntax: > or >>
 
 Common options: n/a
 
@@ -138,6 +189,28 @@ Syntax: cat [option(s)] [file_name(s)] [-] [file_name(s)]
 
 Common options: -n
 
+Example:
+
+ls -al / > stdout.txt
+
+- Creating:
+
+cat > file1
+hello
+(type txt, control-D to finish)
+
+cat > file2
+world
+
+- Concatenating:
+
+cat file1 file2 > file3
+
+- Reading:
+
+cat file3
+hello world
+
 ### Pipe Operator (|)
 
 A pipe takes the standard output of one command and passes it as the input to another.
@@ -145,6 +218,8 @@ A pipe takes the standard output of one command and passes it as the input to an
 Syntax: |
 
 Common options: n/a
+
+Example: history | less
 
 ### head
 
@@ -175,6 +250,49 @@ There are situations that you’ll come across where you or a colleague will try
 Syntax: chmod [option(s)] permissions file_name
 
 Common options: -f, -v
+
+For more info see [permissions](#Permissions) below.
+
+Example: to make a file an executable
+
+- Symbolic:
+  chmod +x file1
+
+- Bits:
+  chmod 700 (user only) (RWX)
+  chmod 770 (user + group) (RWX)
+  chmod 777 (user + group + everyone) (RWX)
+
+- Directories:
+  Read - Won't see the diredtory
+  Execute - Allows you to get into directory
+
+### Permissions
+
+directory:
+drwxr-xr-x 33 mfisher staff 1056 Mar 23 21:31 node_modules
+
+file:
+-rw-r--r-- 1 mfisher staff 499 Mar 25 21:51 package.json
+
+\- rw- r-- r-- mfisher staff 499
+1 2 3 4 5 6 7
+
+1 => directory (d or -)
+2 => user permissions
+(rwx => read, write, execute (each value is assigned to a bit [0 or 1])
+bits -rwx => \_421 => 4 + 2 + 1
+3 => group permissions
+4 => everyone permissions
+5 => user
+6 => group
+7 =>
+
+- Read: This permission give you the authority to open and read a file. Read permission on a directory gives you the ability to lists its content.
+
+- Write: The write permission gives you the authority to modify the contents of a file. The write permission on a directory gives you the authority to add, remove and rename files stored in the directory. Consider a scenario where you have to write permission on file but do not have write permission on the directory where the file is stored. You will be able to modify the file contents. But you will not be able to rename, move or remove the file from the directory.
+
+- Execute: In Unix/Linux, you cannot run a program unless the execute permission is set. If the execute permission is not set, you might still be able to see/modify the program code(provided read & write permissions are set), but not run it.
 
 ### exit
 
@@ -242,3 +360,22 @@ Custom commands in Bash are known as “aliases”. Aliases are essentially an a
 
 Syntax: alias alias_name = “command_to_run”
 
+## pushd popd
+
+## which
+
+which node
+=> Users/mfisher/.nvm/versions/node/v16.14.2/bin/node
+
+## whatis
+
+## man
+
+man ls
+
+## Shortcuts
+
+- control-u: clear line
+- control-l: redraw screen
+- control-c: cancel
+- control-d: quit
